@@ -18,18 +18,15 @@ const navLinks = [
 export default function Navigation({ scrollY }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [hasScrolled, setHasScrolled] = useState(true);
-
+  
   const isScrolled = scrollY > 50;
 
   useEffect(() => {
     // Track scroll state for background styling
     if (scrollY > 100) {
       setIsVisible(true);
-      setHasScrolled(true);
     } else {
       setIsVisible(true);
-      setHasScrolled(true);
     }
   }, [scrollY]);
 
