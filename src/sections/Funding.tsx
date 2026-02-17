@@ -31,6 +31,7 @@ export default function Funding() {
   }, []);
 
   return (
+    <>
     <section
       id="funding"
       ref={sectionRef}
@@ -156,5 +157,6 @@ export default function Funding() {
         </div>
       </div>
     </section>
+    </>
   );
 }

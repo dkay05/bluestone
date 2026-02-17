@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './sections/Navigation';
 import Hero from './sections/Hero';
 import MarketTicker from './sections/MarketTicker';
@@ -12,9 +13,41 @@ import WhyChoose from './sections/WhyChoose';
 import ClientJourney from './sections/ClientJourney';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
+import StandardAccountPage from './pages/StandardAccountPage';
+import ProAccountPage from './pages/ProAccountPage';
+import EcnAccountPage from './pages/EcnAccountPage';
+import StarterFundPage from './pages/funding/StarterFundPage';
+import GrowthFundPage from './pages/funding/GrowthFundPage';
+import ProFundPage from './pages/funding/ProFundPage';
+import EliteFundPage from './pages/funding/EliteFundPage';
+import PrimeFundPage from './pages/funding/PrimeFundPage';
+import CustomPlanPage from './pages/funding/CustomPlanPage';
+import ExclusivePlanPage from './pages/funding/ExclusivePlanPage';
+import IBProgramPage from './pages/IBProgramPage';
+import CopyTradingPage from './pages/CopyTradingPage';
+
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <MarketTicker />
+      <About />
+      <Forex />
+      <Funding />
+      <IBProgram />
+      <CopyTrading />
+      <Security />
+      <WhyChoose />
+      <ClientJourney />
+      <Contact />
+      <Footer />
+    </>
+  );
+}
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +58,6 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Intersection Observer for reveal animations
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -48,21 +80,38 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const scrollTarget = (location.state as { scrollTo?: string } | null)?.scrollTo;
+    if (scrollTarget) {
+      requestAnimationFrame(() => {
+        const target = document.querySelector(scrollTarget);
+        if (target) {
+          const offset = window.innerWidth < 1024 ? 80 : 100;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    }
+  }, [location]);
+
   return (
     <div className="min-h-screen bg-bluestone-dark text-white overflow-x-hidden">
       <Navigation scrollY={scrollY} />
-      <Hero />
-      <MarketTicker />
-      <About />
-      <Forex />
-      <Funding />
-      <IBProgram />
-      <CopyTrading />
-      <Security />
-      <WhyChoose />
-      <ClientJourney />
-      <Contact />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/accounts/standard" element={<StandardAccountPage />} />
+        <Route path="/accounts/pro" element={<ProAccountPage />} />
+        <Route path="/accounts/ecn" element={<EcnAccountPage />} />
+        <Route path="/funding/starter" element={<StarterFundPage />} />
+        <Route path="/funding/growth" element={<GrowthFundPage />} />
+        <Route path="/funding/pro" element={<ProFundPage />} />
+        <Route path="/funding/elite" element={<EliteFundPage />} />
+        <Route path="/funding/prime" element={<PrimeFundPage />} />
+        <Route path="/funding/custom" element={<CustomPlanPage />} />
+        <Route path="/funding/exclusive" element={<ExclusivePlanPage />} />
+        <Route path="/ib-program" element={<IBProgramPage />} />
+        <Route path="/copy-trading" element={<CopyTradingPage />} />
+      </Routes>
     </div>
   );
 }
