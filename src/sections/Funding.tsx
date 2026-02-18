@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, DollarSign, PieChart, FileText, TrendingUp } from 'lucide-react';
+import FundingTable from '../components/FundingTable';
 
 const features = [
   { icon: DollarSign, text: 'Trade without risking your own capital' },
@@ -157,6 +158,7 @@ export default function Funding() {
         </div>
       </div>
     </section>
+    <FundingTable />
     </>
   );
 }

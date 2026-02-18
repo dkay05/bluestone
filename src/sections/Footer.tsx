@@ -5,10 +5,8 @@ import {
   Linkedin, 
   Instagram, 
   Youtube, 
-  Send,
   Shield,
   Mail,
-  Phone,
   MapPin
 } from 'lucide-react';
 
@@ -47,7 +45,6 @@ const socialLinks = [
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [email, setEmail] = useState('');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,12 +71,6 @@ export default function Footer() {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  };
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    setEmail('');
-    alert('Thank you for subscribing!');
   };
 
   return (
@@ -248,7 +239,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Contact Info */}
           <div
             className={`col-span-2 md:col-span-1 transition-all duration-600 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -258,41 +249,20 @@ export default function Footer() {
               transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            <h4 className="text-white font-semibold font-display mb-4">Stay Updated</h4>
-            <p className="text-white/60 text-sm mb-4">
-              Get market insights and updates delivered to your inbox.
-            </p>
-            <form onSubmit={handleSubscribe} className="flex gap-2">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-gold transition-colors duration-400"
-                required
-              />
-              <button
-                type="submit"
-                className="px-4 py-2.5 rounded-xl bg-gold hover:bg-gold-dark text-white transition-colors duration-400 hover:scale-105"
-                style={{ transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)' }}
-              >
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
-
             {/* Contact Info */}
-            <div className="mt-6 space-y-2">
-              <div className="flex items-center gap-2 text-sm text-white/60 hover:text-white/80 transition-colors duration-400">
-                <Mail className="w-4 h-4 text-gold" />
-                support@bluestone.com
+            <div className="mt-6 space-y-3">
+              <h5 className="text-white/80 text-sm font-medium">Dubai Office: Bluestone Exchange</h5>
+              <div className="flex items-start gap-2 text-sm text-white/60 hover:text-white/80 transition-colors duration-400">
+                <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                <span>106 Sheikh Zayed Rd, Aspin Commercial Tower, Dubai</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-white/60 hover:text-white/80 transition-colors duration-400">
-                <Phone className="w-4 h-4 text-gold" />
-                +1 (888) 123-4567
+                <Mail className="w-4 h-4 text-gold flex-shrink-0" />
+                <span>Support@bluestoneexchange.com</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-white/60 hover:text-white/80 transition-colors duration-400">
-                <MapPin className="w-4 h-4 text-gold" />
-                London, UK
+                <span className="w-4 h-4 text-gold flex items-center justify-center">🌐</span>
+                www.bluestoneexchange.com
               </div>
             </div>
           </div>
@@ -331,9 +301,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Risk Warning */}
+        {/* Risk Warning & Disclaimers */}
         <div
-          className={`mt-8 p-4 rounded-xl bg-white/5 border border-white/10 transition-all duration-600 ${
+          className={`mt-8 space-y-4 transition-all duration-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ 
@@ -341,12 +311,34 @@ export default function Footer() {
             transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         >
-          <div className="flex items-start gap-3">
-            <Shield className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+          {/* Risk Warning */}
+          <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+            <div className="flex items-start gap-3">
+              <Shield className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+              <p className="text-xs text-white/50 leading-relaxed">
+                <strong className="text-white/70">Risk Warning:</strong> FX and CFDs are leveraged products and involve a high level of risk. Trading may result in losses exceeding your initial investment and may not be suitable for all investors. Please ensure you fully understand the risks before trading. Past performance is not indicative of future results.
+              </p>
+            </div>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="p-4 rounded-xl bg-white/5 border border-white/10">
             <p className="text-xs text-white/50 leading-relaxed">
-              <strong className="text-white/70">Risk Warning:</strong> Trading Forex and CFDs involves significant risk and can result in the loss of your invested capital. 
-              You should not invest more than you can afford to lose and should ensure that you fully understand the risks involved. 
-              Past performance is not indicative of future results. Please read our full Risk Disclosure.
+              <strong className="text-white/70">Disclaimer:</strong> The information on this website is provided for general informational purposes only and does not take into account your investment objectives or financial situation. Access to this website is at your own initiative. Bluestone Exchange Ltd makes no representations or warranties as to the accuracy or completeness of the content and accepts no liability for any reliance placed on it.
+            </p>
+          </div>
+
+          {/* Regulatory Notice */}
+          <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+            <p className="text-xs text-white/50 leading-relaxed">
+              <strong className="text-white/70">Regulatory Notice:</strong> Bluestone Exchange Ltd is a trading name of Bluestone Exchange and Bluestone Exchange Cyprus Limited. Bluestone Exchange Europe Limited is authorised and regulated as an Investment Firm by the Cyprus Securities and Exchange Commission (licence number Z157892L).
+            </p>
+          </div>
+
+          {/* Copyright */}
+          <div className="text-center pt-4">
+            <p className="text-xs text-white/40">
+              © 2026 Bluestone Exchange Group
             </p>
           </div>
         </div>

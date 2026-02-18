@@ -32,9 +32,16 @@ export default function StarterFundPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-bluestone-deep via-bluestone-dark to-bluestone-deep relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent" />
-        <div className="absolute top-20 right-20 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
+      <section className="pt-32 pb-20 relative overflow-hidden">
+        {/* Background Banner Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/funding1.png" 
+            alt="Starter Fund Banner" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-bluestone-deep/60" />
+        </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <button
             onClick={() => navigate('/')}

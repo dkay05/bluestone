@@ -67,11 +67,11 @@ export default function ClientJourney() {
         </div>
 
         {/* Steps */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {steps.map((step, index) => (
             <div
               key={step.step}
-              className={`relative text-center transition-all duration-600 ${
+              className={`relative text-center transition-all duration-600 h-full ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{
@@ -84,7 +84,7 @@ export default function ClientJourney() {
                 <div className="hidden lg:block absolute top-10 left-[60%] w-[80%] h-px bg-gradient-to-r from-gold/50 to-transparent" />
               )}
 
-              <div className="glass rounded-2xl p-6 card-hover-lift group relative">
+              <div className="glass rounded-2xl p-6 card-hover-lift group relative h-full flex flex-col">
                 {/* Step Number */}
                 <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gradient-to-br from-gold-dark to-gold flex items-center justify-center text-xs font-bold text-white shadow-lg">
                   {step.step}

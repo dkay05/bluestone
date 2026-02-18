@@ -64,14 +64,10 @@ export default function IBProgramPage() {
     <>
       {/* Hero Banner */}
       <section className="pt-32 pb-24 relative overflow-hidden">
-        {/* Background Banner Image */}
-        <div className="absolute inset-0">
-          <img 
-            src="/ib_banner.png" 
-            alt="IB Program Banner" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-bluestone-deep/60" />
+        {/* Background Orbs */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/4 right-0 w-96 h-96 bg-bluestone-accent/10 rounded-full blur-3xl animate-orb-1" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-bluestone-royal/10 rounded-full blur-3xl animate-orb-2" />
         </div>
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

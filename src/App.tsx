@@ -25,6 +25,7 @@ import CustomPlanPage from './pages/funding/CustomPlanPage';
 import ExclusivePlanPage from './pages/funding/ExclusivePlanPage';
 import IBProgramPage from './pages/IBProgramPage';
 import CopyTradingPage from './pages/CopyTradingPage';
+import FundingsPage from './pages/FundingsPage';
 
 function HomePage() {
   return (
@@ -111,6 +112,7 @@ function App() {
         <Route path="/funding/exclusive" element={<ExclusivePlanPage />} />
         <Route path="/ib-program" element={<IBProgramPage />} />
         <Route path="/copy-trading" element={<CopyTradingPage />} />
+        <Route path="/fundings" element={<FundingsPage />} />
       </Routes>
     </div>
   );
